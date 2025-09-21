@@ -1,9 +1,9 @@
 package at.htlkaindorf.pojos;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -18,10 +18,12 @@ public class Customer {
     private String lastname;
     private String email;
     private Gender gender;
+    @JsonFormat(pattern = "dd-MMM-yyyy")
     private LocalDate since;
     private Boolean active;
+
+   @JsonManagedReference
+   @ToString.Exclude
     private Address address;
 
-
-    
 }

@@ -1,9 +1,9 @@
 package at.htlkaindorf.pojos;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
@@ -13,11 +13,15 @@ public class Address {
 
     private Long addressId;
     private String city;
+    @JsonAlias("postal_code")
     private String postalCode;
     private String streetname;
     private String streetnumber;
-    private Customer customer;
 
+    @JsonBackReference
+    private Customer customer;
+    @JsonManagedReference
+    private Country country;
 
 
 }
